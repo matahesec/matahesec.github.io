@@ -1,0 +1,16 @@
+
+🔒 ShopHub E-commerce running on http://localhost:3000
+🛒 Shop: http://localhost:3000/shop
+⚙️  Admin: http://localhost:3000/admin
+🔑 Admin Login: admin@profithub.com / admin123
+
+✅ Security Features Enabled:
+   - Helmet.js security headers
+   - Rate limiting (auth: 5/15min, API: 100/min, uploads: 10/min)
+   - Input sanitization
+   - Account lockout after 5 failed attempts
+   - Password hashing with bcrypt (cost factor 12)
+   - Secure session cookies
+   - File type validation for uploads
+   - Request body size limits
+
