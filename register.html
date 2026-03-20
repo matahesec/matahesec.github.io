@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | ProfitHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a0a0a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fef3c7;
+            margin-bottom: 40px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #f97316, #fbbf24);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: white;
+        }
+
+        .logo span { color: #f97316; }
+
+        .register-card {
+            background: #2d1515;
+            border: 1px solid #5c3030;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .register-card h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            color: #fef3c7;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .register-card .subtitle {
+            color: #d4a574;
+            font-size: 14px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fef3c7;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d4a574;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            background: #1a0a0a;
+            border: 1px solid #5c3030;
+            border-radius: 12px;
+            font-size: 15px;
+            color: #fef3c7;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #f97316;
+        }
+
+        .form-group input::placeholder {
+            color: #d4a574;
+        }
+
+        .form-group select {
+            padding-left: 48px;
+            cursor: pointer;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #f97316;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            font-size: 13px;
+            color: #d4a574;
+            cursor: pointer;
+        }
+
+        .checkbox-group label a {
+            color: #f97316;
+            text-decoration: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: #f97316;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 24px 0;
+            color: #d4a574;
+            font-size: 14px;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #5c3030;
+        }
+
+        .divider span {
+            padding: 0 16px;
+        }
+
+        .social-register {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            background: #1a0a0a;
+            border: 1px solid #5c3030;
+            border-radius: 10px;
+            color: #fef3c7;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .social-btn span {
+            font-size: 13px;
+        }
+
+        .social-btn:hover {
+            background: #2d1515;
+            border-color: #f97316;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 24px;
+            color: #d4a574;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #f97316;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            color: #ef4444;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error.show { display: block; }
+
+        .success {
+            background: rgba(249, 115, 22, 0.15);
+            border: 1px solid #f97316;
+            color: #f97316;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+        }
+
+        .success.show { display: block; }
+
+        .benefits {
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.25);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .benefits h4 {
+            color: #f97316;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .benefits ul {
+            list-style: none;
+        }
+
+        .benefits li {
+            color: #d4a574;
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .benefits li i {
+            color: #f97316;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="fas fa-rocket"></i></div>
+            Profit<span>Hub</span>
+        </a>
+
+        <div class="register-card">
+            <h1>Create Account</h1>
+            <p class="subtitle">Start earning with CPA marketing today</p>
+
+            <div class="error" id="error"></div>
+            <div class="success" id="success"></div>
+
+            <div class="benefits">
+                <h4><i class="fas fa-gift"></i> Free Account Includes:</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> Access to 150+ CPA offers</li>
+                    <li><i class="fas fa-check"></i> Real-time click tracking</li>
+                    <li><i class="fas fa-check"></i> Weekly payouts</li>
+                    <li><i class="fas fa-check"></i> Dedicated support</li>
+                </ul>
+            </div>
+
+            <form id="registerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="firstName" placeholder="John" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="lastName" placeholder="Doe" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-at"></i>
+                        <input type="text" id="username" placeholder="johndoe123" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Min 8 characters" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Traffic Source</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-globe"></i>
+                        <select id="trafficSource" required>
+                            <option value="">Select your traffic source</option>
+                            <option value="social">Social Media (FB, IG, TikTok)</option>
+                            <option value="seo">SEO / Organic</option>
+                            <option value="ppc">PPC / Paid Ads</option>
+                            <option value="email">Email Marketing</option>
+                            <option value="content">Content / Blog</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+
+                <button type="submit" class="btn" id="submitBtn">
+                    <i class="fas fa-rocket"></i> Create Free Account
+                </button>
+            </form>
+
+            <p class="login-link">
+                Already have an account? <a href="/login">Login here</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const error = document.getElementById('error');
+            const success = document.getElementById('success');
+            
+            error.classList.remove('show');
+            success.classList.remove('show');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
+            
+            try {
+                const res = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, email, password })
+                });
+                
+                const data = await res.json();
+                
+                if (data.success) {
+                    success.innerHTML = '<i class="fas fa-check-circle"></i> Account created! Redirecting...';
+                    success.classList.add('show');
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Success!';
+                    setTimeout(() => {
+                        window.location.href = '/login';
+                    }, 1500);
+                } else {
+                    error.textContent = data.error || 'Registration failed';
+                    error.classList.add('show');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-rocket"></i> Create Free Account';
+                }
+            } catch (err) {
+                error.textContent = 'Connection error. Please try again.';
+                error.classList.add('show');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-rocket"></i> Create Free Account';
+            }
+        });
+    </script>
+</body>
+</html>

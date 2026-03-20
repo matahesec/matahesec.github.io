@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfitHub | Earn Money Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a0a0a;
+            --secondary: #2d1515;
+            --accent: #f97316;
+            --accent-dark: #ea580c;
+            --gold: #fbbf24;
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+            --red: #ef4444;
+            --text: #fef3c7;
+            --text-muted: #d4a574;
+            --border: #5c3030;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+        .header-btns {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-outline:hover { background: var(--secondary); }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover { background: var(--accent-dark); }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--primary);
+        }
+
+        .btn-gold:hover { background: #f59e0b; }
+
+        /* Hero */
+        .hero {
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(249, 115, 22, 0.15);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent), #fcd34d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .hero-btns { display: flex; gap: 16px; margin-bottom: 48px; }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* Earnings Card */
+        .earnings-card {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .earnings-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .earnings-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .earnings-card .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .balance-display {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .balance-display small {
+            font-size: 24px;
+            color: var(--text-muted);
+        }
+
+        .earnings-info {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .earnings-info div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .earnings-info i { color: var(--gold); }
+
+        /* Featured Offers */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .section-title span { color: var(--accent); }
+
+        /* Offers Grid */
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
+        }
+
+        .offer-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .offer-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .offer-card.featured {
+            border-color: var(--gold);
+        }
+
+        .offer-card.featured::before {
+            content: 'FEATURED';
+            position: absolute;
+            top: -1px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 0 0 8px 8px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .offer-header {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .offer-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(249, 115, 22, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .offer-info h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .offer-category {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .offer-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .offer-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .offer-payout {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .offer-payout .amount {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .offer-payout .label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .offer-btn {
+            padding: 12px 24px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .offer-btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: var(--secondary);
+            padding: 100px 0;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin: 0 auto 24px;
+        }
+
+        .step-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .step-card p {
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        /* CTA */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--accent) 0%, #dc2626 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .cta-content { position: relative; z-index: 1; }
+
+        .cta h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 32px;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--primary);
+            padding: 16px 40px;
+            font-size: 16px;
+        }
+
+        .cta .btn:hover {
+            background: var(--text);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            padding: 60px 0 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 48px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin: 16px 0 24px;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li { margin-bottom: 12px; }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
+
+        .footer-bottom {
+            padding: 24px 0;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Login Required Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: var(--secondary);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .modal h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .modal p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .modal-btns { display: flex; gap: 12px; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 44px; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .header-btns { display: none; }
+            .hero h1 { font-size: 36px; }
+            .offers-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="logo">
+                <div class="logo-icon"><i class="fas fa-rocket"></i></div>
+                Profit<span>Hub</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#offers">Offers</a></li>
+                    <li><a href="#how">How It Works</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#" class="active">Home</a></li>
+                </ul>
+            </nav>
+            <div class="header-btns">
+                <a href="/login" class="btn btn-outline">Login</a>
+                <a href="/register" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-bolt"></i>
+                        High Converting CPA Offers
+                    </div>
+                    <h1>Earn Money With <span>CPA Marketing</span></h1>
+                    <p>Join thousands of affiliates earning passive income through our curated CPA offers. High payouts, instant tracking, and reliable payments.</p>
+                    <div class="hero-btns">
+                        <a href="/register" class="btn btn-primary" style="padding: 16px 32px; font-size: 16px;">
+                            Start Earning Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#offers" class="btn btn-outline" style="padding: 16px 32px; font-size: 16px;">
+                            Browse Offers
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">$2.5M+</div>
+                            <div class="stat-label">Paid to Affiliates</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">15K+</div>
+                            <div class="stat-label">Active Publishers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">CPA Offers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="earnings-card">
+                    <h3>Top Earning Offer</h3>
+                    <p class="subtitle">Currently paying highest</p>
+                    <div class="balance-display"><small>$</small>15.00</div>
+                    <div class="earnings-info">
+                        <div><i class="fas fa-mouse-pointer"></i> Per Conversion</div>
+                        <div><i class="fas fa-clock"></i> 24h Approval</div>
+                    </div>
+                    <a href="/register" class="btn btn-gold" style="width: 100%; text-align: center;">
+                        <i class="fas fa-hand-holding-dollar"></i> Claim This Offer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers -->
+    <section class="section" id="offers">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Trending <span>Offers</span></h2>
+                <a href="/register" class="btn btn-outline">View All Offers</a>
+            </div>
+            <div class="offers-grid" id="offersGrid">
+                <!-- Offers loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how">
+        <div class="container">
+            <div class="section-header" style="justify-content: center; margin-bottom: 60px;">
+                <h2 class="section-title">How It <span>Works</span></h2>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Create Account</h3>
+                    <p>Sign up for free and get instant access to all our CPA offers and tracking tools.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Promote Offers</h3>
+                    <p>Choose from hundreds of high-converting offers and share your unique referral links.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Get Paid</h3>
+                    <p>Earn commissions for every verified lead. Withdraw via PayPal, Bank Transfer, or Crypto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Earning?</h2>
+                <p>Join thousands of affiliates already making money with ProfitHub.</p>
+                <a href="/register" class="btn">
+                    <i class="fas fa-rocket"></i> Create Free Account
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <div class="logo-icon"><i class="fas fa-rocket"></i></div>
+                        Profit<span>Hub</span>
+                    </a>
+                    <p>The leading CPA affiliate network. Earn money by promoting high-converting offers from top brands worldwide.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Offers</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Finance</a></li>
+                        <li><a href="#">Gaming</a></li>
+                        <li><a href="#">Software</a></li>
+                        <li><a href="#">Dating</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Anti-Spam</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2026 ProfitHub. All rights reserved.</p>
+                <p style="color: var(--accent);"><i class="fas fa-bolt"></i> Lightning Fast Payouts</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Required Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <div style="font-size: 48px; margin-bottom: 16px;"><i class="fas fa-lock" style="color: var(--accent);"></i></div>
+            <h3>Login Required</h3>
+            <p>You need to be logged in to access CPA offers and start earning.</p>
+            <div class="modal-btns">
+                <a href="/login" class="btn btn-outline" style="flex: 1;">Login</a>
+                <a href="/register" class="btn btn-primary" style="flex: 1;">Sign Up Free</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show offers preview (limited)
+        const offers = [
+            { id: 1, title: 'Credit Card Application', category: 'Finance', payout: 15.00, description: 'High-paying credit card offer. US users only. Complete application.', featured: 1 },
+            { id: 2, title: 'Crypto Wallet Signup', category: 'Finance', payout: 5.50, description: 'Crypto wallet registration. KYC required. Global offer.', featured: 1 },
+            { id: 3, title: 'VPN 7-Day Trial', category: 'Software', payout: 2.80, description: 'Popular VPN service trial. Desktop and mobile.', featured: 0 },
+            { id: 4, title: 'Sports Betting Registration', category: 'Gaming', payout: 12.00, description: 'Sports betting platform signup. US traffic.', featured: 0 },
+            { id: 5, title: 'Netflix Trial', category: 'Streaming', payout: 4.50, description: 'Netflix premium trial. Auto-converting offer.', featured: 1 },
+            { id: 6, title: 'Insurance Quote', category: 'Finance', payout: 6.00, description: 'Auto insurance quote form. Multi-step conversion.', featured: 0 }
+        ];
+
+        const icons = {
+            'Finance': 'fa-coins',
+            'Software': 'fa-laptop',
+            'Gaming': 'fa-gamepad',
+            'Streaming': 'fa-play',
+            'Dating': 'fa-heart',
+            'Email': 'fa-envelope',
+            'Mobile': 'fa-mobile-screen',
+            'Lifestyle': 'fa-star'
+        };
+
+        const offersGrid = document.getElementById('offersGrid');
+        offers.forEach(offer => {
+            const icon = icons[offer.category] || 'fa-gift';
+            offersGrid.innerHTML += `
+                <div class="offer-card ${offer.featured ? 'featured' : ''}">
+                    <div class="offer-header">
+                        <div class="offer-icon" style="background: rgba(249, 115, 22, 0.15);">
+                            <i class="fas ${icon}" style="color: var(--accent);"></i>
+                        </div>
+                        <div class="offer-info">
+                            <h3>${offer.title}</h3>
+                            <span class="offer-category">${offer.category}</span>
+                        </div>
+                    </div>
+                    <p class="offer-description">${offer.description}</p>
+                    <div class="offer-footer">
+                        <div class="offer-payout">
+                            <div class="amount">$${offer.payout.toFixed(2)}</div>
+                            <div class="label">per conversion</div>
+                        </div>
+                        <button class="offer-btn" onclick="showLoginModal()">
+                            <i class="fas fa-external-link-alt"></i> Get Link
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+
+        function showLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        document.getElementById('loginModal').addEventListener('click', (e) => {
+            if (e.target.id === 'loginModal') {
+                document.getElementById('loginModal').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

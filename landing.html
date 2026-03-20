@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكسب المال | عروض CPA الحصرية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a0a0a;
+            --secondary: #2d1515;
+            --accent: #f97316;
+            --accent-dark: #ea580c;
+            --gold: #fbbf24;
+            --blue: #3b82f6;
+            --text: #fef3c7;
+            --text-muted: #d4a574;
+            --border: #5c3030;
+            --success: #22c55e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Tajawal', sans-serif; background: var(--primary); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+        
+        .hero {
+            min-height: 100vh; position: relative;
+            display: flex; align-items: center; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(249, 115, 22, 0.15) 0%, transparent 60%);
+        }
+        .hero-particles {
+            position: absolute; inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(249, 115, 22, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(251, 191, 36, 0.1) 0%, transparent 30%);
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+        
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            padding: 20px 0; z-index: 1000;
+            background: linear-gradient(to bottom, rgba(26, 10, 10, 0.95), transparent);
+        }
+        .navbar-content {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 24px; font-weight: 700;
+        }
+        .logo-icon {
+            width: 45px; height: 45px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: white;
+        }
+        .logo span { color: var(--accent); }
+        
+        .nav-buttons { display: flex; gap: 12px; }
+        .btn {
+            padding: 12px 28px; border-radius: 12px; font-weight: 600;
+            font-size: 15px; text-decoration: none; transition: all 0.3s;
+            border: none; cursor: pointer; font-family: 'Tajawal', sans-serif;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white; box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.5);
+        }
+        .btn-outline {
+            background: transparent; border: 2px solid var(--border);
+            color: var(--text);
+        }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), #f59e0b);
+            color: var(--primary);
+        }
+        
+        .hero-content {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+            align-items: center; padding: 100px 0 60px;
+        }
+        .hero-text h1 {
+            font-size: 52px; font-weight: 800; line-height: 1.2; margin-bottom: 24px;
+        }
+        .hero-text h1 span {
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-text p {
+            font-size: 18px; color: var(--text-muted); margin-bottom: 32px;
+            line-height: 1.8;
+        }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .hero-stats {
+            display: flex; gap: 40px; margin-top: 48px; padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .stat { text-align: center; }
+        .stat-number {
+            font-size: 36px; font-weight: 800; color: var(--accent);
+            display: block;
+        }
+        .stat-label { font-size: 14px; color: var(--text-muted); }
+        
+        .hero-visual {
+            position: relative;
+        }
+        .money-animation {
+            width: 100%; height: 400px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .money-icon {
+            font-size: 120px; color: var(--gold);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .floating-card {
+            position: absolute;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex; align-items: center; gap: 12px;
+            animation: float 3s ease-in-out infinite;
+        }
+        .floating-card:nth-child(2) { top: 20px; right: -20px; animation-delay: 0.5s; }
+        .floating-card:nth-child(3) { bottom: 40px; left: -30px; animation-delay: 1s; }
+        .floating-card:nth-child(4) { bottom: 100px; right: 20px; animation-delay: 1.5s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .floating-card .icon {
+            width: 40px; height: 40px;
+            background: rgba(249, 115, 22, 0.2);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            color: var(--accent);
+        }
+        .floating-card .amount { font-weight: 700; color: var(--success); }
+        
+        .features { padding: 100px 0; background: var(--secondary); }
+        .section-title {
+            text-align: center; margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 40px; font-weight: 800; margin-bottom: 16px;
+        }
+        .section-title h2 span { color: var(--accent); }
+        .section-title p { color: var(--text-muted); font-size: 18px; }
+        
+        .features-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+        }
+        .feature-card {
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 20px; padding: 40px 30px;
+            text-align: center; transition: all 0.3s;
+        }
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .feature-icon {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(251, 191, 36, 0.1));
+            border-radius: 20px; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 32px; color: var(--accent);
+        }
+        .feature-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+        .feature-card p { color: var(--text-muted); line-height: 1.7; }
+        
+        .offers { padding: 100px 0; }
+        .offers-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+        }
+        .offer-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px; overflow: hidden;
+            transition: all 0.3s;
+        }
+        .offer-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .offer-header {
+            padding: 24px; display: flex; align-items: center; gap: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .offer-icon {
+            width: 60px; height: 60px;
+            background: rgba(249, 115, 22, 0.15);
+            border-radius: 14px; display: flex; align-items: center; justify-content: center;
+            font-size: 24px; color: var(--accent);
+        }
+        .offer-badge {
+            background: var(--accent); color: white;
+            padding: 4px 12px; border-radius: 20px;
+            font-size: 12px; font-weight: 700;
+        }
+        .offer-body { padding: 24px; }
+        .offer-body h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .offer-body p { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
+        .offer-footer {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .offer-payout {
+            font-size: 28px; font-weight: 800; color: var(--success);
+        }
+        .offer-payout small { font-size: 14px; color: var(--text-muted); }
+        
+        .how-it-works { padding: 100px 0; background: var(--secondary); }
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; position: relative; }
+        .step {
+            text-align: center; position: relative;
+        }
+        .step::after {
+            content: ''; position: absolute; top: 40px; right: -50%;
+            width: 100%; height: 2px; background: linear-gradient(90deg, var(--accent), transparent);
+        }
+        .step:last-child::after { display: none; }
+        .step-number {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 32px; font-weight: 800; color: white;
+            margin: 0 auto 24px;
+        }
+        .step h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .step p { color: var(--text-muted); font-size: 14px; }
+        
+        .testimonials { padding: 100px 0; }
+        .testimonials-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+        }
+        .testimonial-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px; padding: 30px;
+        }
+        .testimonial-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+        .testimonial-avatar {
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 18px; color: white;
+        }
+        .testimonial-stars { color: var(--gold); margin-bottom: 12px; }
+        .testimonial-text { color: var(--text-muted); line-height: 1.8; font-style: italic; }
+        
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--accent) 0%, #dc2626 100%);
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .cta::before {
+            content: ''; position: absolute; top: -50%; right: -20%;
+            width: 600px; height: 600px;
+            background: rgba(255,255,255,0.1); border-radius: 50%;
+        }
+        .cta-content { position: relative; z-index: 1; }
+        .cta h2 { font-size: 44px; font-weight: 800; color: white; margin-bottom: 16px; }
+        .cta p { font-size: 18px; color: rgba(255,255,255,0.9); margin-bottom: 32px; }
+        .cta .btn { background: white; color: var(--accent); }
+        .cta .btn:hover { transform: translateY(-3px); }
+        
+        .footer {
+            background: var(--secondary); padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-content {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-brand p { color: var(--text-muted); margin: 16px 0 24px; line-height: 1.7; }
+        .footer-social { display: flex; gap: 12px; }
+        .footer-social a {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); transition: all 0.3s;
+        }
+        .footer-social a:hover { background: var(--accent); color: white; }
+        .footer-column h4 { font-size: 16px; font-weight: 600; margin-bottom: 20px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--text-muted); font-size: 14px; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--accent); }
+        .footer-bottom {
+            padding-top: 30px; border-top: 1px solid var(--border);
+            text-align: center; color: var(--text-muted); font-size: 14px;
+        }
+        
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.85);
+            display: none; align-items: center; justify-content: center;
+            z-index: 5000; padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: var(--secondary);
+            border-radius: 24px; max-width: 420px; width: 100%;
+            padding: 40px; text-align: center;
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+        .modal p { color: var(--text-muted); margin-bottom: 24px; }
+        .modal-form { text-align: right; }
+        .form-group { margin-bottom: 16px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 14px 16px;
+            background: var(--primary); border: 1px solid var(--border);
+            border-radius: 12px; color: var(--text); font-size: 15px;
+            font-family: 'Tajawal', sans-serif; outline: none;
+        }
+        .form-group input:focus { border-color: var(--accent); }
+        .modal .btn { width: 100%; margin-top: 8px; }
+        .modal-close {
+            position: absolute; top: 20px; left: 20px;
+            background: none; border: none; color: var(--text-muted); font-size: 24px;
+        }
+        
+        @media (max-width: 1000px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 40px; }
+            .hero-stats { justify-content: center; }
+            .hero-visual { display: none; }
+            .features-grid, .offers-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+            .steps { grid-template-columns: 1fr 1fr; }
+            .step::after { display: none; }
+            .footer-content { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .hero-text h1 { font-size: 32px; }
+            .features-grid, .offers-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            .section-title h2 { font-size: 32px; }
+            .cta h2 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-content">
+                <a href="/" class="logo">
+                    <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                    أكسب<span>مالي</span>
+                </a>
+                <div class="nav-buttons">
+                    <button class="btn btn-outline" onclick="openModal()">تسجيل الدخول</button>
+                    <button class="btn btn-primary" onclick="openModal()">ابدأ الآن</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-particles"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>اكسب <span>أموالاً حقيقية</span> من الإنترنت</h1>
+                    <p>انضم إلى أكثر من 15,000 مسوق يعملون معنا ويحققون أرباحاً يومية. عروض CPA حصرية بأعلى نسب payouts في السوق.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="openModal()" style="padding: 16px 36px; font-size: 17px;">
+                            <i class="fas fa-rocket"></i> ابدأ الربح الآن
+                        </button>
+                        <button class="btn btn-outline" style="padding: 16px 36px; font-size: 17px;">
+                            <i class="fas fa-play"></i> شاهد كيف يعمل
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">$2.5M+</span>
+                            <span class="stat-label">أرباح موزعة</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">15K+</span>
+                            <span class="stat-label">مسوق نشط</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">150+</span>
+                            <span class="stat-label">عرض حصري</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="money-animation">
+                        <i class="fas fa-coins money-icon"></i>
+                        <div class="floating-card">
+                            <div class="icon"><i class="fas fa-check"></i></div>
+                            <div>
+                                <div class="amount">+$15.00</div>
+                                <small style="color: var(--text-muted)">لكل عملية</small>
+                            </div>
+                        </div>
+                        <div class="floating-card">
+                            <div class="icon"><i class="fas fa-clock"></i></div>
+                            <div>
+                                <div style="font-weight: 600;">موافقات سريعة</div>
+                                <small style="color: var(--success)">24 ساعة</small>
+                            </div>
+                        </div>
+                        <div class="floating-card">
+                            <div class="icon"><i class="fas fa-wallet"></i></div>
+                            <div>
+                                <div style="font-weight: 600;">دفع آمن</div>
+                                <small style="color: var(--text-muted)">PayPal - بنوك</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>لماذا <span>نحن الأفضل</span>؟</h2>
+                <p>نقدم لك أفضل العروض وأسرع المدفوعات في السوق</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+                    <h3>أرباح عالية</h3>
+                    <p>نسبة دفعات تصل إلى $50 لكل عملية تحويل. عروض حصرية لا تجدها في أي مكان آخر.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>مدفوعات سريعة</h3>
+                    <p>احصل على أموالك خلال 24 ساعة فقط. ندعم PayPal والتحويل البنكي والعملات الرقمية.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>تتبع في الوقت الحقيقي</h3>
+                    <p>لوحة تحكم متقدمة لمتابعة نقرة والتحويلات والأرباح لحظة بلحظة.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-gift"></i></div>
+                    <h3>عروض متنوعة</h3>
+                    <p>أكثر من 150 عرض في مجالات متعددة: تقنية، ألعاب، تطبيقات، تأمين وغيرها.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3>دعم 24/7</h3>
+                    <p>فريق دعم متاح على مدار الساعة لمساعدتك في أي استفسار أو مشكلة.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>برنامج الإحالة</h3>
+                    <p>ادعُ أصدقاءك واكسب 10% من أرباحهم مدى الحياة. كلما دعوت أكثر، كلما ربحت أكثر.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="offers">
+        <div class="container">
+            <div class="section-title">
+                <h2>أفضل <span>العروض الحصرية</span></h2>
+                <p>عروض مختارة بعناية بأعلى نسب payout</p>
+            </div>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <div class="offer-header">
+                        <div class="offer-icon"><i class="fas fa-credit-card"></i></div>
+                        <div>
+                            <h3>طلب بطاقة ائتمان</h3>
+                            <span class="offer-badge">الأكثر ربحاً</span>
+                        </div>
+                    </div>
+                    <div class="offer-body">
+                        <p>عرض بطاقة الائتمان المضمونة. مستخدمين أمريكيين فقط. عملية كاملة.</p>
+                        <div class="offer-footer">
+                            <div class="offer-payout">$15.00<small>/تحويل</small></div>
+                            <button class="btn btn-primary" onclick="openModal()">احصل على الرابط</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-header">
+                        <div class="offer-icon"><i class="fab fa-bitcoin"></i></div>
+                        <div>
+                            <h3>تسجيل محفظة крипто</h3>
+                            <span class="offer-badge">عرض ساخن</span>
+                        </div>
+                    </div>
+                    <div class="offer-body">
+                        <p>تسجيل محفظة عملات رقمية. عملية KYC مطلوبة. عرض عالمي.</p>
+                        <div class="offer-footer">
+                            <div class="offer-payout">$5.50<small>/تحويل</small></div>
+                            <button class="btn btn-primary" onclick="openModal()">احصل على الرابط</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-header">
+                        <div class="offer-icon"><i class="fas fa-film"></i></div>
+                        <div>
+                            <h3>تجربة Netflix المجانية</h3>
+                            <span class="offer-badge">سهل التحويل</span>
+                        </div>
+                    </div>
+                    <div class="offer-body">
+                        <p>تسجيل في Netflix تجريبي. تحويل تلقائي. جمهور عالمي.</p>
+                        <div class="offer-footer">
+                            <div class="offer-payout">$4.50<small>/تحويل</small></div>
+                            <button class="btn btn-primary" onclick="openModal()">احصل على الرابط</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>كيف <span>تبدأ الربح</span>؟</h2>
+                <p>3 خطوات بسيطة للبدء في كسب المال</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>سجّل حساباً مجانياً</h3>
+                    <p>أنشئ حسابك في دقيقة واحدة وابدأ فوراً</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>اختر العروض</h3>
+                    <p>تصفح أكثر من 150 عرض وحدد المناسب لجمهورك</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>شارك رابطك</h3>
+                    <p>انشر روابطك على وسائل التواصل أو موقعك</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>احصل على أموالك</h3>
+                    <p>اسحب أرباحك عبر PayPal أو تحويل بنكي</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>ماذا يقول <span>مسوقونا</span>؟</h2>
+                <p>آراء حقيقية من مسوقين يحققون أرباحاً يومياً</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">م</div>
+                        <div>
+                            <h4>محمد العلي</h4>
+                            <small style="color: var(--text-muted)">مسوق منذ 2024</small>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"بدأت بـ $0 والآن أكسب أكثر من $500 شهرياً. العروض ممتازة والدفعات سريعة جداً. أنصح بها بشدة!"</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">أ</div>
+                        <div>
+                            <h4>أحمد حسين</h4>
+                            <small style="color: var(--text-muted)">مسوق منذ 2023</small>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"أفضل منصة CPA تعاملت معها. الدعم ممتاز والعروض متنوعة. سحبت أكثر من $2000 حتى الآن."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">س</div>
+                        <div>
+                            <h4>سارة محمود</h4>
+                            <small style="color: var(--text-muted)">مسوقة منذ 2025</small>
+                        </div>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"بدأت أعمل من البيت وأحقق دخلاً إضافياً ممتازاً. لوحة التحكم سهلة جداً ومريحة للعين."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>هل أنت مستعد لبدء الربح؟</h2>
+                <p>انضم إلى آلاف المسوقين الذين يحققون أرباحاً حقيقية يومياً</p>
+                <button class="btn" onclick="openModal()" style="padding: 18px 48px; font-size: 18px;">
+                    <i class="fas fa-rocket"></i> سجّل الآن مجاناً
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                        أكسب<span>مالي</span>
+                    </a>
+                    <p>منصتك الموثوقة للربح من الإنترنت. نوفر لك أفضل العروض وأسرع المدفوعات منذ 2020.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">الصفحة الرئيسية</a></li>
+                        <li><a href="#">العروض</a></li>
+                        <li><a href="#">كيف يعمل</a></li>
+                        <li><a href="#">المدونة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>الدعم</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">تواصل معنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>طرق الدفع</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-paypal"></i> PayPal</a></li>
+                        <li><a href="#"><i class="fas fa-university"></i> تحويل بنكي</a></li>
+                        <li><a href="#"><i class="fab fa-bitcoin"></i> Bitcoin</a></li>
+                        <li><a href="#"><i class="fas fa-wallet"></i> USDT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 أكسبمالي. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <h2>ابدأ الربح الآن</h2>
+            <p>أنشئ حساباً مجانياً وابدأ في دقائق</p>
+            <form class="modal-form" id="signupForm">
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="اسم المستخدم" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="كلمة المرور" required minlength="8">
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> إنشاء حساب مجاني
+                </button>
+            </form>
+            <p style="margin-top: 16px; font-size: 13px; color: var(--text-muted);">
+                لديك حساب؟ <a href="/login" style="color: var(--accent);">سجل دخولك</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('modal').classList.add('active');
+        }
+        
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+        
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') closeModal();
+        });
+        
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const res = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, email, password })
+                });
+                const data = await res.json();
+                
+                if (data.success) {
+                    alert('تم إنشاء حسابك بنجاح! يمكنك الآن تسجيل الدخول.');
+                    closeModal();
+                    window.location.href = '/login';
+                } else {
+                    alert(data.error || 'حدث خطأ، حاول مرة أخرى');
+                }
+            } catch (err) {
+                alert('حدث خطأ في الاتصال');
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
